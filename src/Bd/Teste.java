@@ -10,7 +10,8 @@ public class Teste {
 	public static void main(String[] args) {
 		Connection conn = Conexao.getThis();
 		try {
-			PreparedStatement st = conn.prepareStatement("INSERT INTO Batata (Codigo, Nome, NumPelos, EscalaMaturacao) Values (1000,'Joao',20,5);");
+			System.out.println("EU NAO QUERO BATATA!");
+			PreparedStatement st = conn.prepareStatement("INSERT INTO agro.Estado(CodEst,NomeEst,CodReg) Values (2,'Vila de Iape',1);");
 			st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

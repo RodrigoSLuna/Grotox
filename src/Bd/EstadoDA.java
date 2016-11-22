@@ -19,7 +19,7 @@ public class EstadoDA {
 		PreparedStatement st = conn.prepareStatement("Insert into agro.Estado(CodEst,CodReg,NomeEst) values(?,1,?);");
 		st.setInt(1, (Integer.parseInt( est.getCodigo() ) ) ) ;
 		st.setString(2, est.getNome());
-		st.executeQuery();
+		st.executeUpdate();
 	}
 	
 	public Estado Consulta(String codigo) throws SQLException{

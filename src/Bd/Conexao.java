@@ -3,6 +3,8 @@ package Bd;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import com.mysql.jdbc.Driver;
+
 public class Conexao{
 	private Conexao() {;}
 	
@@ -11,6 +13,7 @@ public class Conexao{
 		try{
 			String driverName = "com.mysql.jdbc.Driver";
 			Class.forName(driverName);
+			//Class.forName(driverName, true, DriverManager.class.getClassLoader());
 			
 			String serverName = "localhost";
 			String mydatabase = "grotox";

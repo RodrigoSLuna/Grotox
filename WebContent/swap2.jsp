@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,6 +28,7 @@
 <body>
 <form action ="Controller" method ="get" >
 	<%
+	
 		/*
 		Tentativa de automatizar o web site, no entanto faltou tempo para setar
 		os parametros no arquivo txt, bastava criar outros Dispatchers nos Forms.
@@ -37,7 +39,7 @@
 		out.println(" <input type = \"hidden\" name = \"acao\" value = \""+request.getParameter("acao")+"\"> ");
 		out.println(" <input type = \"hidden\" name = \"nome\" value = \""+request.getParameter("nome")+"\"> ");
 		out.println("Voce deseja " + request.getParameter("acao") + " a " + request.getParameter("tipo") + "<br>" +request.getParameter("nome") + "?" );
-		out.println(" <input type = \"hidden\" name = \"tipo\" value = \""+request.getParameter("tipo")+"\"> ");
+		out.println(" <input type = \"hidden\" name = \"tipo\" value = \""+request.getParameter("nome")+"\"> ");
 		
 		Map<String,String[]> parametros = request.getParameterMap(); 
 		Map<String,String> getParametros = new HashMap<String,String>();
