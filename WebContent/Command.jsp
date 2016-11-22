@@ -11,7 +11,7 @@
 	<%
 		switch(request.getParameter("tipo"))
 		{
-		case "Disciplina": out.println("Nome da Disciplina");
+		case "Estado": out.println("Codigo do Estado");
 		out.println( " <input type=\"text\" name=\"nome\"> " );
 		break;
 		case "Professor" : out.println("Nome do Professor");

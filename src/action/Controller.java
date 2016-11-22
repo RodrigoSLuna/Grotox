@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Disciplina;
-import model.FormDisciplina;
+import model1.FormProduto;
+import model1.Produto;
 
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {
@@ -38,9 +38,11 @@ public class Controller extends HttpServlet {
 			Dispatcher dis = new Dispatcher();
 			try {
 				Object o = dis.cria("model."+nomeDaClasse);
+				
 				Method m = dis.buscaMetodo(o.getClass(), Metodo);
-				Object form = dis.instanciaForm( m );			
+				Object form = dis.instanciaForm( m );
 				String a = dis.preencheForm(form, SendParametros);
+
 				if(a.equals("ok")){
 					response.sendRedirect((String) m.invoke(o,form));
 				}else{

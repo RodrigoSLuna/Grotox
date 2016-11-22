@@ -53,15 +53,16 @@ public class Dispatcher {
     	
         for(String stringKey : setters.keySet()){
         	java.lang.reflect.Field field = form.getClass().getDeclaredField(stringKey.substring(3, stringKey.length()));
-            field.setAccessible(true);
+           field.setAccessible(true);
         	for(String stringDoor : parametros.keySet()){
+        		System.out.println(stringDoor);
         		
         		if(stringKey.toLowerCase().equals("set"+stringDoor.toLowerCase() )){
         			
         			if( (parametros.get(stringDoor)==""||parametros.get(stringDoor)==null) 
         					&& field.getAnnotation(Obrigatorio.class).parametros() == true )
         				
-        				// throw new Exception("O campo "+stringKey.substring(3, stringKey.length())+" é obrigatorio!");
+        				// throw new Exception("O campo "+stringKey.substring(3, stringKey.length())+" ï¿½ obrigatorio!");
         				
         				return stringKey.substring(3, stringKey.length());
         			setters.get(stringKey).invoke( form,parametros.get(stringDoor));

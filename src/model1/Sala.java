@@ -1,19 +1,18 @@
-package model;
+package model1;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 import action.Obrigatorio;
 
-public class Professor {
+public class Sala {
 
 	@Obrigatorio(parametros = false)
 	private String nome = "empty";
 	
 	@Obrigatorio(parametros = true)
-	private String email = "empty";
-	
-	
+	private String capacidade = "empty";
+
 	public String getNome() {
 		return nome;
 	}
@@ -22,12 +21,13 @@ public class Professor {
 		this.nome = nome;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getCapacidade() {
+		return capacidade;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCapacidade(String string) {
+		this.capacidade = string;
 	}
 	
+
 }

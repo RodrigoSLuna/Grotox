@@ -1,11 +1,11 @@
-package model;
+package model1;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 import action.Obrigatorio;
 
-public class Disciplina {
+public class Produto {
 	
 	@Obrigatorio(parametros = false)
 	private String nome = "empty";
@@ -15,7 +15,7 @@ public class Disciplina {
 	
 	
 	@Obrigatorio(parametros = true)
-	private String ementa = "empty";
+	private String iativo = "empty";
 	
 	
 	public String getNome() {
@@ -31,14 +31,15 @@ public class Disciplina {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
-	public String getEmenta() {
-		return ementa;
+	public String getIAtivo() {
+		return iativo;
 	}
-	public void setEmenta(String ementa) {
-		this.ementa = ementa;
+	public void setIativo(String iativo) {
+		this.iativo = iativo;
 	}
 	public String toString(){
-		return this.nome + "/" +this.codigo + "/" + this.ementa;
+		return this.nome + "/" +this.codigo + "/" + this.iativo;
 	}
 	
 }
+	

@@ -5,11 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<%@page import="model.Disciplina" %>
-<%@page import="model.Professor" %>
-<%@page import ="model.Sala" %>
+<%@page import="model.Estado" %>
 <%@page import ="action.Dispatcher" %>
-<%@page import = "model.Turma" %>
 <%@page import="java.io.BufferedReader" %>
 <%@page import="java.io.File" %>
 <%@page import="java.io.FileReader" %>

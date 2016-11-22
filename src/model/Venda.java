@@ -1,21 +1,22 @@
-package model2;
+package model;
 
 public class Venda {
-	private int quantidade,mes,ano;
+	private int quantidade, mes, ano;
 	private Produto prod;
 	private Estado est;
-	
-	public Venda(){
+
+	public Venda() {
 		quantidade = mes = ano = -1;
-		prod = null; est = null;
+		prod = null;
+		est = null;
 	}
-	
-	public Venda(Produto prod, Estado est, int quantidade, int mes, int ano){
+
+	public Venda(Produto prod, Estado est, int quantidade, int mes, int ano) {
 		setProduto(prod);
 		setEstado(est);
 		setQuantidade(quantidade);
 		setMes(mes);
-		setAno(ano); 
+		setAno(ano);
 	}
 
 	public int getQuantidade() {
@@ -57,5 +58,5 @@ public class Venda {
 	public void setEstado(Estado est) {
 		this.est = est;
 	}
-	
+
 }
