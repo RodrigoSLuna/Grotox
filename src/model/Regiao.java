@@ -37,12 +37,14 @@ public class Regiao implements Iterable<Estado> {
 	}
 
 	public boolean addEstado(Estado elem) {
+		elem.setRegiao(this);
 		return ests.add(elem);
 	}
 
 	public boolean setEstadoOn(int index, Estado elem) {
 		if (index < ests.size()) {
 			ests.set(index, elem);
+			elem.setRegiao(this);
 			return true;
 		}
 		return false;

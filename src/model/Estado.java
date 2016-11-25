@@ -4,13 +4,24 @@ public class Estado {
 
 	private String codigo = "empty";
 	private String nome = "empty";
+	private Regiao reg = null;
 
 	public Estado() {
+		
 	}
 
-	public Estado(String codigo, String nome) {
+	public Estado(String codigo, String nome, Regiao regiao) {
 		setCodigo(codigo);
 		setNome(nome);
+		setRegiao(regiao);
+	}
+	
+	public void setRegiao(Regiao regiao){
+		reg = regiao;
+	}
+	
+	public Regiao getRegiao(){
+		return reg;
 	}
 
 	public void setCodigo ( String codigo) {

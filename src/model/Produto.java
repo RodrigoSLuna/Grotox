@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Produto implements Iterable<ClasseDeProduto> {
+public class Produto implements Iterable<String> {
 
 	private int codigo;
 	private String nome;
-	private List<ClasseDeProduto> classes = new ArrayList<ClasseDeProduto>();
+	private ClasseDeProduto classe = null;
 	private List<String> ingAtivos = new ArrayList<String>();
+	private Empresa empr;
 
 	public Produto() {
 		codigo = -1;
@@ -19,6 +20,21 @@ public class Produto implements Iterable<ClasseDeProduto> {
 	public Produto(int codigo, String nome) {
 		setCodigo(codigo);
 		setNome(nome);
+	}
+	
+	public Produto(int codigo, String nome, ClasseDeProduto classe, Empresa emp){
+		setCodigo(codigo);
+		setNome(nome);
+		setClasse(classe);
+		setEmpresa(emp);
+	}
+	
+	public void setEmpresa(Empresa empresa){
+		empr = empresa;
+	}
+	
+	public Empresa getEmpresa(){
+		return empr;
 	}
 
 	public void setCodigo(int codigo) {
@@ -37,32 +53,21 @@ public class Produto implements Iterable<ClasseDeProduto> {
 		return nome;
 	}
 
-	public ClasseDeProduto getClasseOn(int idx) {
-		if (classes.size() > idx) {
-			return classes.get(idx);
-		}
-		return null;
+	public void setClasse(ClasseDeProduto clProduto){
+		classe = clProduto;
 	}
-
-	public boolean addClasse(ClasseDeProduto elem) {
-		return classes.add(elem);
+	
+	public ClasseDeProduto getClasse(){
+		return classe;
 	}
-
-	public boolean setClasseOn(int idx, ClasseDeProduto elem) {
-		if (idx < classes.size()) {
-			classes.set(idx, elem);
-			return true;
-		}
-		return false;
-	}
-
+	
 	public List<String> getIngredientesAtivos() {
 		return ingAtivos;
 	}
 
 	@Override
-	public Iterator<ClasseDeProduto> iterator() {
-		return classes.iterator();
+	public Iterator<String> iterator() {
+		return ingAtivos.iterator();
 	}
 
 }

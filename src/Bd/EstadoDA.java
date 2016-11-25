@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import model.Estado;
 
@@ -29,7 +28,7 @@ public class EstadoDA {
 		ResultSet rs = st.executeQuery();
 		if(rs.next()){
 			String nome = rs.getString("NomeEst");
-			Estado est = new Estado(  codigo  , nome);
+			Estado est = new Estado(codigo,nome,null);
 			return est;
 		}else{
 			return null;
