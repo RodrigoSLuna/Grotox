@@ -9,10 +9,12 @@
 <body>
 	<form action="swap2.jsp" method="get">	
 	<%
+		/*
 		switch(request.getParameter("tipo"))
 		{
+		
 		case "Estado": out.println("Codigo do Estado");
-		out.println( " <input type=\"text\" name=\"nome\"> " );
+		//out.println( " <input type=\"text\" name=\"nome\"> " );
 		break;
 		case "Professor" : out.println("Nome do Professor");
 		out.println("<input type=\"text\" name=\"nome\">");
@@ -24,7 +26,10 @@
 		out.println("<input type=\"text\" name=\"nome\">");
 		default:;
 		break;
- 		}
+ 		
+		}
+		*/
+		
 		out.println(" <input type = \"hidden\" name = \"tipo\" value = \""+request.getParameter("tipo")+"\"> ");
 		out.println(" <input type = \"hidden\" name = \"nome\" value = \""+request.getParameter("nome")+"\"> ");
 	%>

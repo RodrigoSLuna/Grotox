@@ -4,24 +4,26 @@ public class Estado {
 
 	private String codigo = "empty";
 	private String nome = "empty";
-	private Regiao reg = null;
+	private String regiao = "empty";
 
 	public Estado() {
 		
 	}
 
-	public Estado(String codigo, String nome, Regiao regiao) {
+	public Estado(String codigo, String nome, String regiao) {
 		setCodigo(codigo);
 		setNome(nome);
 		setRegiao(regiao);
 	}
 	
-	public void setRegiao(Regiao regiao){
-		reg = regiao;
+	public void setRegiao(String Nomeregiao){
+
+		this.regiao =   Nomeregiao  ; 
+		
 	}
 	
-	public Regiao getRegiao(){
-		return reg;
+	public String getRegiao(){
+		return this.regiao;
 	}
 
 	public void setCodigo ( String codigo) {

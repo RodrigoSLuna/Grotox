@@ -25,11 +25,10 @@ public class Dispatcher {
     }
 
     public Object instanciaForm( Method m ) throws Exception {
-		
     	@SuppressWarnings("rawtypes")
 		Class[] parametros = m.getParameterTypes();
     	for(Class<?> p: parametros){
-    		if(p.getName() != null){
+    		if( p.getName() != null ){
     			return cria(p.getName());
     		}
     	}
@@ -50,12 +49,10 @@ public class Dispatcher {
     public String preencheForm( Object form, Map<String, String> parametros ) throws Exception {
     	Map<String, Method> setters = buscaSetters( form.getClass() );
         
-    	
         for(String stringKey : setters.keySet()){
         	java.lang.reflect.Field field = form.getClass().getDeclaredField(stringKey.substring(3, stringKey.length()));
            field.setAccessible(true);
         	for(String stringDoor : parametros.keySet()){
-        		System.out.println(stringDoor);
         		
         		if(stringKey.toLowerCase().equals("set"+stringDoor.toLowerCase() )){
         			

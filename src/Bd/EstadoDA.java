@@ -14,8 +14,10 @@ public class EstadoDA {
 	}
 	
 	public void insert(Estado est) throws SQLException{
+				
 		Connection conn = Conexao.getThis();
 		PreparedStatement st = conn.prepareStatement("Insert into agro.Estado(CodEst,CodReg,NomeEst) values(?,1,?);");
+		
 		st.setInt(1, (Integer.parseInt( est.getCodigo() ) ) ) ;
 		st.setString(2, est.getNome());
 		st.executeUpdate();
