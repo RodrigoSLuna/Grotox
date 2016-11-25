@@ -38,8 +38,8 @@
 		//String a = request.getParameter("tipo");
 		out.println(" <input type = \"hidden\" name = \"acao\" value = \""+request.getParameter("acao")+"\"> ");
 		out.println(" <input type = \"hidden\" name = \"nome\" value = \""+request.getParameter("nome")+"\"> ");
-		out.println("Voce deseja " + request.getParameter("acao") + " a " + request.getParameter("tipo") + "<br>" +request.getParameter("nome") + "?" );
-		out.println(" <input type = \"hidden\" name = \"tipo\" value = \""+request.getParameter("nome")+"\"> ");
+		//out.println("Voce deseja " + request.getParameter("acao") + " a " + request.getParameter("tipo") + "<br>" +request.getParameter("nome") + "?" );
+		//out.println(" <input type = \"hidden\" name = \"tipo\" value = \""+request.getParameter("nome")+"\"> ");
 		
 		Map<String,String[]> parametros = request.getParameterMap(); 
 		Map<String,String> getParametros = new HashMap<String,String>();
@@ -56,13 +56,13 @@
 		
 		if(!request.getParameter("acao").equals("Consultar") && !request.getParameter("acao").equals("Excluir")){
 			for(String key : MyMap.keySet()){
-				if(!key.equals("setnome")){
+				if(!key.equals("setcodigo")){
 					out.println(key.subSequence(3, key.length()) + " <input type=\"text\" name = \""+key.substring(3, key.length())+"\"> ");
 					out.println("<br>");
 				}
 			}
 			}
-		out.println(" <input type=\"submit\" value=\""+request.getParameter("acao") +"\">  ");
+		//out.println(" <input type=\"submit\" value=\""+request.getParameter("acao") +"\">  ");
 
 
 	%>
