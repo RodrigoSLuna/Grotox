@@ -21,6 +21,7 @@ public class ClasseDeProdutoDA {
 		st.setString(2, cdp.getNome());
 		st.setString(3, cdp.getDescricao());
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public void update(ClasseDeProduto cdp) throws SQLException{	
@@ -29,12 +30,14 @@ public class ClasseDeProdutoDA {
 		st.setString(2, cdp.getDescricao());
 		st.setInt(3, cdp.getCodigo());
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public void delete(String codigo) throws SQLException{
 		PreparedStatement st = conn.prepareStatement("DELETE FROM agro.ClasseProd WHERE Codigo=?;");
 		st.setInt(1, Integer.parseInt(codigo));
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public ClasseDeProduto buscaPorCodigo(String codigo) throws SQLException{
@@ -45,8 +48,12 @@ public class ClasseDeProdutoDA {
 			String nome = rs.getString("Nome");
 			String desricao = rs.getString("Descricao");
 			ClasseDeProduto cdp = new ClasseDeProduto(Integer.parseInt(codigo),nome,desricao);
+			rs.close();
+			st.close();
 			return cdp;
 		}else{
+			rs.close();
+			st.close();
 			return null;
 		}
 	}
@@ -59,8 +66,12 @@ public class ClasseDeProdutoDA {
 			int codigo = rs.getInt("Codigo");
 			String desricao = rs.getString("Descricao");
 			ClasseDeProduto cdp = new ClasseDeProduto(codigo,nome,desricao);
+			rs.close();
+			st.close();
 			return cdp;
 		}else{
+			rs.close();
+			st.close();
 			return null;
 		}
 	}

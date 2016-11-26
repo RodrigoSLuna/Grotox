@@ -13,6 +13,7 @@ public class Teste {
 			System.out.println("EU NAO QUERO BATATA!");
 			PreparedStatement st = conn.prepareStatement("INSERT INTO agro.Estado(CodEst,NomeEst,CodReg) Values (2,'Vila de Iape',1);");
 			st.executeUpdate();
+			st.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

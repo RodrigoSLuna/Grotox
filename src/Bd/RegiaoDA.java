@@ -20,6 +20,7 @@ public class RegiaoDA {
 		st.setInt(1, reg.getCodigo() ) ;
 		st.setString(2, reg.getNome());
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public void update(Regiao reg) throws SQLException{	
@@ -27,12 +28,14 @@ public class RegiaoDA {
 		st.setString(1, reg.getNome());
 		st.setInt(2, reg.getCodigo());
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public void delete(String codigo) throws SQLException{
 		PreparedStatement st = conn.prepareStatement("DELETE FROM agro.Regiao WHERE CodReg=?;");
 		st.setInt(1, Integer.parseInt(codigo));
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public Regiao buscaPorCodigo(String codigo) throws SQLException{
@@ -42,8 +45,12 @@ public class RegiaoDA {
 		if(rs.next()){
 			String nome = rs.getString("NomeReg");
 			Regiao reg = new Regiao(Integer.parseInt(codigo),nome);
+			rs.close();
+			st.close();
 			return reg;
 		}else{
+			rs.close();
+			st.close();
 			return null;
 		}
 	}
@@ -55,8 +62,12 @@ public class RegiaoDA {
 		if(rs.next()){
 			int codigo = rs.getInt("CodReg");
 			Regiao reg = new Regiao(codigo,nome);
+			rs.close();
+			st.close();
 			return reg;
 		}else{
+			rs.close();
+			st.close();
 			return null;
 		}
 	}

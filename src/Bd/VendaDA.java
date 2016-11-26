@@ -22,6 +22,7 @@ public class VendaDA {
 		st.setInt(4, v.getAno());
 		st.setInt(5, v.getQuantidade());
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public void update(Venda v) throws SQLException{	
@@ -32,6 +33,7 @@ public class VendaDA {
 		st.setInt(4, v.getMes());
 		st.setInt(5, v.getAno());
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public void delete(Venda v) throws SQLException{
@@ -41,6 +43,7 @@ public class VendaDA {
 		st.setInt(3, v.getMes());
 		st.setInt(4, v.getAno());
 		st.executeUpdate();
+		st.close();
 	}
 	
 }

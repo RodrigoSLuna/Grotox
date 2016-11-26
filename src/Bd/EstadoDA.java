@@ -18,8 +18,9 @@ public class EstadoDA {
 	public void insert(Estado est) throws SQLException{
 		PreparedStatement st = conn.prepareStatement("INSERT INTO agro.Estado(CodEst,CodReg,NomeEst) VALUES(?,1,?);");
 		st.setInt(1, (Integer.parseInt( est.getCodigo() ) ) ) ;
-		st.setString(2, est.getNome());
+		st.setString(3, est.getNome());
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public void update(Estado est) throws SQLException{	
@@ -28,12 +29,14 @@ public class EstadoDA {
 		st.setInt(2,1);
 		st.setInt(3, (Integer.parseInt(est.getCodigo())));
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public void delete(String codigo) throws SQLException{
 		PreparedStatement st = conn.prepareStatement("DELETE FROM agro.Estado WHERE CodEst=?;");
 		st.setInt(1, Integer.parseInt(codigo));
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public Estado buscaPorCodigo(String codigo) throws SQLException{
@@ -43,8 +46,12 @@ public class EstadoDA {
 		if(rs.next()){
 			String nome = rs.getString("NomeEst");
 			Estado est = new Estado(codigo,nome,"empty");
+			rs.close();
+			st.close();
 			return est;
 		}else{
+			rs.close();
+			st.close();
 			return null;
 		}
 	}
@@ -56,8 +63,12 @@ public class EstadoDA {
 		if(rs.next()){
 			String codigo = rs.getString("CodEst");
 			Estado est = new Estado(codigo,nome,"empty");
+			rs.close();
+			st.close();
 			return est;
 		}else{
+			rs.close();
+			st.close();
 			return null;
 		}
 	}

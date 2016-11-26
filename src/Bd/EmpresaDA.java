@@ -34,6 +34,7 @@ public class EmpresaDA {
 		bytesImg.close();
 		st.setBytes(4, byteArray);
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public void update(Empresa emp) throws SQLException, IOException{	
@@ -48,12 +49,14 @@ public class EmpresaDA {
 		st.setBytes(3, byteArray);
 		st.setString(4,emp.getCNPJ()) ;
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public void delete(String codigo) throws SQLException{
 		PreparedStatement st = conn.prepareStatement("DELETE FROM agro.Empresa WHERE CNPJ=?;");
 		st.setString(1,codigo);
 		st.executeUpdate();
+		st.close();
 	}
 	
 	public Empresa buscaPorCodigo(String codigo) throws SQLException, IOException{
@@ -67,8 +70,12 @@ public class EmpresaDA {
 			InputStream is = b.getBinaryStream();
 			BufferedImage image = ImageIO.read(is);
 			Empresa emp = new Empresa(codigo, razao, nome, image);
+			rs.close();
+			st.close();
 			return emp;
 		}else{
+			rs.close();
+			st.close();
 			return null;
 		}
 	}
@@ -84,8 +91,12 @@ public class EmpresaDA {
 			InputStream is = b.getBinaryStream();
 			BufferedImage image = ImageIO.read(is);
 			Empresa emp = new Empresa(codigo, razao, nome, image);
+			rs.close();
+			st.close();
 			return emp;
 		}else{
+			rs.close();
+			st.close();
 			return null;
 		}
 	}
