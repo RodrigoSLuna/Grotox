@@ -1,6 +1,7 @@
 package model;
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public class Empresa implements Iterable<Produto> {
 
 	private String CNPJ, razaoSocial, nomeFantasia;
-	private Image logo;
+	private BufferedImage logo;
 	private List<Produto> prods = new ArrayList<Produto>();
 
 	public Empresa() {
@@ -16,11 +17,11 @@ public class Empresa implements Iterable<Produto> {
 		logo = null;
 	}
 
-	public Empresa(String cnpj, String razaoSocial, String nomeFantasia, Image logo) {
+	public Empresa(String cnpj, String razaoSocial, String nomeFantasia, BufferedImage image) {
 		setCNPJ(cnpj);
 		setRazaoSocial(razaoSocial);
 		setNomeFantasia(nomeFantasia);
-		setLogo(logo);
+		setLogo(image);
 	}
 
 	public void setCNPJ(String cnpj) {
@@ -47,11 +48,11 @@ public class Empresa implements Iterable<Produto> {
 		return nomeFantasia;
 	}
 
-	public void setLogo(Image logo) {
-		this.logo = logo;
+	public void setLogo(BufferedImage image) {
+		this.logo = image;
 	}
 
-	public Image getLogo() {
+	public BufferedImage getLogo() {
 		return logo;
 	}
 

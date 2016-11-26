@@ -36,7 +36,7 @@ public class EstadoDA {
 		st.executeUpdate();
 	}
 	
-	public Estado BuscaPorCodigo(String codigo) throws SQLException{
+	public Estado buscaPorCodigo(String codigo) throws SQLException{
 		PreparedStatement st = conn.prepareStatement("SELECT * FROM agro.Estado WHERE CodEst = ? ;");
 		st.setInt(1,Integer.parseInt(codigo));
 		ResultSet rs = st.executeQuery();
@@ -49,7 +49,7 @@ public class EstadoDA {
 		}
 	}
 	
-	public Estado BuscaPorNome(String nome) throws SQLException{
+	public Estado buscaPorNome(String nome) throws SQLException{
 		PreparedStatement st = conn.prepareStatement("SELECT * FROM agro.Estado WHERE NomeEst = ? ;");
 		st.setString(1,nome) ;
 		ResultSet rs = st.executeQuery();

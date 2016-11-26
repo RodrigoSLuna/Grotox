@@ -35,7 +35,7 @@ public class RegiaoDA {
 		st.executeUpdate();
 	}
 	
-	public Regiao BuscaPorCodigo(String codigo) throws SQLException{
+	public Regiao buscaPorCodigo(String codigo) throws SQLException{
 		PreparedStatement st = conn.prepareStatement("SELECT * FROM agro.Regiao WHERE CodReg = ? ;");
 		st.setInt(1,Integer.parseInt(codigo));
 		ResultSet rs = st.executeQuery();
@@ -48,7 +48,7 @@ public class RegiaoDA {
 		}
 	}
 	
-	public Regiao BuscaPorNome(String nome) throws SQLException{
+	public Regiao buscaPorNome(String nome) throws SQLException{
 		PreparedStatement st = conn.prepareStatement("SELECT * FROM agro.Regiao WHERE NomeReg = ? ;");
 		st.setString(1,nome) ;
 		ResultSet rs = st.executeQuery();
