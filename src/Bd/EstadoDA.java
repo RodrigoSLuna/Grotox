@@ -9,30 +9,66 @@ import model.Estado;
 
 public class EstadoDA {
 	
+	private Connection conn;
+	
 	public EstadoDA(){
-		
+		conn = Conexao.getThis();
 	}
 	
 	public void insert(Estado est) throws SQLException{
-				
-		Connection conn = Conexao.getThis();
-		PreparedStatement st = conn.prepareStatement("Insert into agro.Estado(CodEst,CodReg,NomeEst) values(?,1,?);");
-		
+		PreparedStatement st = conn.prepareStatement("INSERT INTO agro.Estado(CodEst,CodReg,NomeEst) VALUES(?,1,?);");
 		st.setInt(1, (Integer.parseInt( est.getCodigo() ) ) ) ;
-		st.setString(2, est.getNome());
+		st.setString(3, est.getNome());
 		st.executeUpdate();
+		st.close();
 	}
 	
-	public Estado Consulta(String codigo) throws SQLException{
-		Connection conn = Conexao.getThis();
-		PreparedStatement st = conn.prepareStatement("Select * from agro.Estado where CodEst = ? ;");
-		st.setInt(1,Integer.parseInt(  codigo ) ) ;
+	public void update(Estado est) throws SQLException{	
+		PreparedStatement st = conn.prepareStatement("UPDATE agro.Estado SET NomeEst=?, CodReg=? WHERE CodEst=?;");
+		st.setString(1, est.getNome());
+		st.setInt(2,1);
+		st.setInt(3, (Integer.parseInt(est.getCodigo())));
+		st.executeUpdate();
+		st.close();
+	}
+	
+	public void delete(String codigo) throws SQLException{
+		PreparedStatement st = conn.prepareStatement("DELETE FROM agro.Estado WHERE CodEst=?;");
+		st.setInt(1, Integer.parseInt(codigo));
+		st.executeUpdate();
+		st.close();
+	}
+	
+	public Estado buscaPorCodigo(String codigo) throws SQLException{
+		PreparedStatement st = conn.prepareStatement("SELECT * FROM agro.Estado WHERE CodEst = ? ;");
+		st.setInt(1,Integer.parseInt(codigo));
 		ResultSet rs = st.executeQuery();
 		if(rs.next()){
 			String nome = rs.getString("NomeEst");
-			Estado est = new Estado(codigo,nome,null);
+			Estado est = new Estado(codigo,nome,"empty");
+			rs.close();
+			st.close();
 			return est;
 		}else{
+			rs.close();
+			st.close();
+			return null;
+		}
+	}
+	
+	public Estado buscaPorNome(String nome) throws SQLException{
+		PreparedStatement st = conn.prepareStatement("SELECT * FROM agro.Estado WHERE NomeEst = ? ;");
+		st.setString(1,nome) ;
+		ResultSet rs = st.executeQuery();
+		if(rs.next()){
+			String codigo = rs.getString("CodEst");
+			Estado est = new Estado(codigo,nome,"empty");
+			rs.close();
+			st.close();
+			return est;
+		}else{
+			rs.close();
+			st.close();
 			return null;
 		}
 	}

@@ -30,17 +30,17 @@ CREATE TABLE if not exists agro.Produto(
 	CodProd int NOT NULL AUTO_INCREMENT,
 	NomeProd varchar(255) NOT NULL,
 	CNPJ varchar(14) NOT NULL,
+	CodClass int NOT NULL,
 	PRIMARY KEY(CodProd),
-	constraint fk_prod_emp FOREIGN KEY(CNPJ) references agro.Empresa(CNPJ)
+	constraint fk_prod_emp FOREIGN KEY(CNPJ) references agro.Empresa(CNPJ),
+	constraint fk_class_prod FOREIGN KEY(CodClass) references agro.ClasseProd(CodClass)
 );
 
 CREATE TABLE if not exists agro.ClasseProd(
 	CodClass int NOT NULL AUTO_INCREMENT,
 	Nome varchar(255) NOT NULL,
 	Descricao varchar(255) NULL,
-	CodProd int NOT NULL,
 	PRIMARY KEY(CodClass),
-	constraint fk_class_prod FOREIGN KEY(CodProd) references Produto(CodProd)
 );
 
 CREATE TABLE if not exists agro.IngredienteAtivo(
