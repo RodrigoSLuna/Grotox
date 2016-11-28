@@ -18,6 +18,7 @@ public class Dispatcher {
     public Method buscaMetodo( Class<?> classe, String nomeMetodo ) {
     	Method[] m = classe.getMethods();
     	for(Method o : m){
+    		System.out.println(o);
     		if(o.getName().equals(nomeMetodo))
     			return o;
     	}
@@ -34,12 +35,15 @@ public class Dispatcher {
     	}
         return null;
     }
+    public String Format(String Nome){
+    	return Nome.replace('_', ' ');
+    }
     public Map<String, Method> buscaSetters( Class<?> classe ) {
     	Map<String,Method> MyMap = new HashMap<>(); 
-    	Method[] m = classe.getDeclaredMethods();	
+    	Method[] m = classe.getMethods();	
     	for(Method met : m){
     		if(met.getName().toLowerCase().contains("set")){
-    			MyMap.put(met.getName().toLowerCase() , met);
+    			MyMap.put( Format(  met.getName() ) , met);
     		}
     	}
         return MyMap;
