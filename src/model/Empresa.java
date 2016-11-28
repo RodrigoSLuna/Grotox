@@ -18,8 +18,8 @@ public class Empresa implements Iterable<Produto> {
 
 	public Empresa(String cnpj, String razaoSocial, String nomeFantasia, Image logo) {
 		setCNPJ(cnpj);
-		setRazaoSocial(razaoSocial);
-		setNomeFantasia(nomeFantasia);
+		setRazao_Social(razaoSocial);
+		setNome_Fantasia(nomeFantasia);
 		setLogo(logo);
 	}
 
@@ -31,19 +31,19 @@ public class Empresa implements Iterable<Produto> {
 		return CNPJ;
 	}
 
-	public void setRazaoSocial(String rs) {
+	public void setRazao_Social(String rs) {
 		razaoSocial = rs;
 	}
 
-	public String getRazaoSocial() {
+	public String getRazao_Social() {
 		return razaoSocial;
 	}
 
-	public void setNomeFantasia(String nf) {
+	public void setNome_Fantasia(String nf) {
 		nomeFantasia = nf;
 	}
 
-	public String getNomeFantasia() {
+	public String getNome_Fantasia() {
 		return nomeFantasia;
 	}
 
@@ -64,7 +64,7 @@ public class Empresa implements Iterable<Produto> {
 		return prods.add(elem);
 	}
 
-	public boolean setProdutoOn(int idx, Produto elem) {
+	private boolean setProdutoOn(int idx, Produto elem) {
 		if (idx < prods.size()) {
 			prods.set(idx, elem);
 			return true;
