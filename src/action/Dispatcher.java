@@ -18,7 +18,6 @@ public class Dispatcher {
     public Method buscaMetodo( Class<?> classe, String nomeMetodo ) {
     	Method[] m = classe.getMethods();
     	for(Method o : m){
-    		System.out.println(o);
     		if(o.getName().equals(nomeMetodo))
     			return o;
     	}
@@ -52,16 +51,18 @@ public class Dispatcher {
     											
     public String preencheForm( Object form, Map<String, String> parametros ) throws Exception {
     	Map<String, Method> setters = buscaSetters( form.getClass() );
-        
-        for(String stringKey : setters.keySet()){
-        	java.lang.reflect.Field field = form.getClass().getDeclaredField(stringKey.substring(3, stringKey.length()));
-           field.setAccessible(true);
+    	
+    	
+    	for(String stringKey : setters.keySet()){
+    		
+      //  java.lang.reflect.Field field = form.getClass().getDeclaredField(stringKey.substring(3, stringKey.length()));
+      //  field.setAccessible(true);
         	for(String stringDoor : parametros.keySet()){
         		
         		if(stringKey.toLowerCase().equals("set"+stringDoor.toLowerCase() )){
         			
         			if( (parametros.get(stringDoor)==""||parametros.get(stringDoor)==null) 
-        					&& field.getAnnotation(Obrigatorio.class).parametros() == true )
+        					/*&& field.getAnnotation(Obrigatorio.class).parametros() == true*/ )
         				
         				// throw new Exception("O campo "+stringKey.substring(3, stringKey.length())+" � obrigatorio!");
         				

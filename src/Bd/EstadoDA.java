@@ -16,8 +16,9 @@ public class EstadoDA {
 	}
 	
 	public void insert(Estado est) throws SQLException{
-		PreparedStatement st = conn.prepareStatement("INSERT INTO agro.Estado(CodEst,CodReg,NomeEst) VALUES(?,1,?);");
-		st.setInt(1, (Integer.parseInt( est.getCodigo() ) ) ) ;
+		PreparedStatement st = conn.prepareStatement("INSERT INTO agro.Estado(CodEst,CodReg,NomeEst) VALUES(?,?,?);");
+		st.setInt(1, (Integer.parseInt( est.getCodigo_Estado() ) ) ) ;
+		st.setInt(2, (Integer.parseInt( est.getCodigo_Regiao() ) ));
 		st.setString(3, est.getNome());
 		st.executeUpdate();
 		st.close();
@@ -26,8 +27,8 @@ public class EstadoDA {
 	public void update(Estado est) throws SQLException{	
 		PreparedStatement st = conn.prepareStatement("UPDATE agro.Estado SET NomeEst=?, CodReg=? WHERE CodEst=?;");
 		st.setString(1, est.getNome());
-		st.setInt(2,1);
-		st.setInt(3, (Integer.parseInt(est.getCodigo())));
+		st.setInt(2, Integer.parseInt(est.getCodigo_Regiao()));
+		st.setInt(3, (Integer.parseInt(est.getCodigo_Estado())));
 		st.executeUpdate();
 		st.close();
 	}

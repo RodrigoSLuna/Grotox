@@ -25,8 +25,8 @@ public class EmpresaDA {
 	public void insert(Empresa emp) throws SQLException, IOException{
 		PreparedStatement st = conn.prepareStatement("INSERT INTO agro.Empresa(CNPJ,RazaoSocial,NomeFantasia,Logo) VALUES(?,?,?,?);");
 		st.setString(1,emp.getCNPJ()) ;
-		st.setString(2, emp.getRazaoSocial());
-		st.setString(3, emp.getNomeFantasia());
+		st.setString(2, emp.getRazao_Social());
+		st.setString(3, emp.getNome_Fantasia());
 		ByteArrayOutputStream bytesImg = new ByteArrayOutputStream();
 		ImageIO.write(emp.getLogo(), "jpg", bytesImg);
 		bytesImg.flush();
@@ -39,8 +39,8 @@ public class EmpresaDA {
 	
 	public void update(Empresa emp) throws SQLException, IOException{	
 		PreparedStatement st = conn.prepareStatement("UPDATE agro.Empresa SET NomeFantasia=?, RazaoSocial=?, Logo=? WHERE CNPJ=?;");
-		st.setString(1, emp.getRazaoSocial());
-		st.setString(2, emp.getNomeFantasia());
+		st.setString(1, emp.getRazao_Social());
+		st.setString(2, emp.getNome_Fantasia());
 		ByteArrayOutputStream bytesImg = new ByteArrayOutputStream();
 		ImageIO.write(emp.getLogo(), "jpg", bytesImg);
 		bytesImg.flush();

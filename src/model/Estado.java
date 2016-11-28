@@ -1,32 +1,33 @@
 package model;
 
+import action.Obrigatorio;
+
 public class Estado {
 
-	private String codigo = "empty";
-	private String nome = "empty";
-	private String regiao = "empty";
+	public String codigo = "empty";
+	public String nome = "empty";
+	public String regiao = "empty";
 
 	public Estado() {
 		
 	}
 
 	public Estado(String codigo, String nome, String regiao) {
-		setCodigo(codigo);
+		setCodigo_Estado(codigo);
 		setNome(nome);
-		setRegiao(regiao);
+		setCodigo_Regiao(regiao);
 	}
 	
-	public void setRegiao(String Nomeregiao){
-
-		this.regiao =   Nomeregiao  ; 
+	public void setCodigo_Regiao(String Nomeregiao){
+		this.regiao =   Nomeregiao; 
 		
 	}
 	
-	public String getRegiao(){
+	public String getCodigo_Regiao(){
 		return this.regiao;
 	}
 
-	public void setCodigo ( String codigo) {
+	public void setCodigo_Estado ( String codigo) {
 		this.codigo = codigo;
 	}
 
@@ -34,7 +35,7 @@ public class Estado {
 		this.nome = nome;
 	}
 
-	public String getCodigo() {
+	public String getCodigo_Estado() {
 		return codigo;
 	}
 

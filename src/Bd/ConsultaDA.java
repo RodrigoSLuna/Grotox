@@ -29,7 +29,7 @@ public class ConsultaDA {
 		List<Estado> ests = new ArrayList<Estado>();
 		while(rs.next()){
 			Estado est = new Estado();
-			est.setCodigo(rs.getString("CodEst"));
+			est.setCodigo_Estado(rs.getString("CodEst"));
 			est.setNome(rs.getString("NomeEst"));
 			ests.add(est);
 		}
@@ -44,7 +44,7 @@ public class ConsultaDA {
 		List<Estado> ests = new ArrayList<Estado>();
 		while(rs.next()){
 			Estado est = new Estado();
-			est.setCodigo(rs.getString("CodEst"));
+			est.setCodigo_Estado(rs.getString("CodEst"));
 			est.setNome(rs.getString("NomeEst"));
 			ests.add(est);
 		}
@@ -103,8 +103,8 @@ public class ConsultaDA {
 				mep.put(key, temp);
 				emps.add(temp);
 			}
-			temp.setNomeFantasia(rs.getString("NomeFantasia"));
-			Produto p = temp.getProdutoOn(0);
+			temp.setNome_Fantasia(rs.getString("NomeFantasia"));
+			Produto p = temp.getProduto_On(0);
 			if(p == null){
 				p = new Produto();
 				temp.addProduto(p);

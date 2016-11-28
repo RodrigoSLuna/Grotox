@@ -41,9 +41,11 @@ public class Controller extends HttpServlet {
 			try {
 				Object o = dis.cria("model."+nomeDaClasse);
 				Method m = dis.buscaMetodo(o.getClass(), Metodo);
-				
 				Object form = dis.instanciaForm( m );
+				
+				System.out.println("Comecou a preencher ");
 				String a = dis.preencheForm(form, SendParametros);
+				System.out.println("Terminou de preencher ");
 				if(a.equals("ok")){
 					response.sendRedirect((String) m.invoke(o,form));
 				}else{
