@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Regiao implements Iterable<Estado> {
 
-	private int codigo;
-	private String nome;
+	private int codigo = -1;
+	private String nome = "empty";
 	private List<Estado> ests = new ArrayList<Estado>();
 
 	public Regiao() {
@@ -16,12 +16,16 @@ public class Regiao implements Iterable<Estado> {
 	}
 
 	public Regiao(int codigo, String nome) {
-		setCodigo(codigo);
+		colocaCodigo(codigo);
 		setNome(nome);
 	}
-
-	public void setCodigo(int codigo) {
+	
+	public void colocaCodigo(int codigo) {
 		this.codigo = codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = Integer.parseInt(codigo);
 	}
 
 	public void setNome(String nome) {
@@ -41,7 +45,7 @@ public class Regiao implements Iterable<Estado> {
 		return ests.add(elem);
 	}
 
-	public boolean setEstadoOn(int index, Estado elem) {
+	public boolean Coloca_Estado_On(int index, Estado elem) {
 		if (index < ests.size()) {
 			ests.set(index, elem);
 	//		elem.setRegiao(this);
@@ -50,7 +54,7 @@ public class Regiao implements Iterable<Estado> {
 		return false;
 	}
 
-	public Estado getEstadoOn(int index) {
+	public Estado Pega_Estado_On(int index) {
 		if (index < ests.size()) {
 			return ests.get(index);
 		}

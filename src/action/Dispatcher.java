@@ -47,7 +47,16 @@ public class Dispatcher {
     	}
         return MyMap;
     }
-   
+    public Map<String, Method> buscaGetters( Class<?> classe ) {
+    	Map<String,Method> MyMap = new HashMap<>(); 
+    	Method[] m = classe.getDeclaredMethods();	
+    	for(Method met : m){
+    		if(met.getName().toLowerCase().contains("get")){
+    			MyMap.put( Format(  met.getName() ) , met);
+    		}
+    	}
+        return MyMap;
+    }
     											
     public String preencheForm( Object form, Map<String, String> parametros ) throws Exception {
     	Map<String, Method> setters = buscaSetters( form.getClass() );

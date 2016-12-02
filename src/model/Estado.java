@@ -8,8 +8,9 @@ public class Estado {
 	public String nome = "empty";
 	public String regiao = "empty";
 
+	
+	
 	public Estado() {
-		
 	}
 
 	public Estado(String codigo, String nome, String regiao) {
@@ -19,7 +20,7 @@ public class Estado {
 	}
 	
 	public void setCodigo_Regiao(String Nomeregiao){
-		this.regiao =   Nomeregiao; 
+		this.regiao = Nomeregiao; 
 		
 	}
 	

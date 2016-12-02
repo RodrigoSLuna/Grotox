@@ -26,6 +26,13 @@ CREATE TABLE if not exists agro.Empresa(
 	PRIMARY KEY(CNPJ)
 ) ENGINE = INNODB;
 
+CREATE TABLE if not exists agro.ClasseProd(
+	CodClass int NOT NULL AUTO_INCREMENT,
+	Nome varchar(255) NOT NULL,
+	Descricao varchar(255) NULL,
+	PRIMARY KEY(CodClass)
+);
+
 CREATE TABLE if not exists agro.Produto(
 	CodProd int NOT NULL AUTO_INCREMENT,
 	NomeProd varchar(255) NOT NULL,
@@ -34,13 +41,6 @@ CREATE TABLE if not exists agro.Produto(
 	PRIMARY KEY(CodProd),
 	constraint fk_prod_emp FOREIGN KEY(CNPJ) references agro.Empresa(CNPJ),
 	constraint fk_class_prod FOREIGN KEY(CodClass) references agro.ClasseProd(CodClass)
-);
-
-CREATE TABLE if not exists agro.ClasseProd(
-	CodClass int NOT NULL AUTO_INCREMENT,
-	Nome varchar(255) NOT NULL,
-	Descricao varchar(255) NULL,
-	PRIMARY KEY(CodClass),
 );
 
 CREATE TABLE if not exists agro.IngredienteAtivo(

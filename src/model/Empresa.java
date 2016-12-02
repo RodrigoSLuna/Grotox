@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Empresa implements Iterable<Produto> {
 
-	private String CNPJ, razaoSocial, nomeFantasia;
-	private BufferedImage logo;
+	private String CNPJ = "empty", razaoSocial = "empty", nomeFantasia = "empty";
+	private BufferedImage logo = null;
 	private List<Produto> prods = new ArrayList<Produto>();
 
 	public Empresa() {

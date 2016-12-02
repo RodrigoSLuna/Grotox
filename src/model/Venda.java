@@ -1,9 +1,9 @@
 package model;
 
 public class Venda {
-	private int quantidade, mes, ano;
-	private Produto prod;
-	private Estado est;
+	private int quantidade = -1, mes = -1, ano = -1;
+	private Produto prod = null;
+	private Estado est = null;
 
 	public Venda() {
 		quantidade = mes = ano = -1;

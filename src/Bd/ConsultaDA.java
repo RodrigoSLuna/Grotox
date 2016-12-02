@@ -24,7 +24,7 @@ public class ConsultaDA {
 	}
 	
 	public List<Estado> one() throws SQLException{
-		PreparedStatement st = conn.prepareStatement("SELECT CodEst, NomeEst, FROM agro.Estado WHERE NomeEst LIKE 'A%';");
+		PreparedStatement st = conn.prepareStatement("SELECT CodEst, NomeEst FROM agro.Estado WHERE NomeEst LIKE 'A%';");
 		ResultSet rs = st.executeQuery();
 		List<Estado> ests = new ArrayList<Estado>();
 		while(rs.next()){
@@ -54,22 +54,24 @@ public class ConsultaDA {
 	}
 	
 	public List<ClasseDeProduto> three() throws SQLException {
-		PreparedStatement st = conn.prepareStatement("SELECT Nome, Descricao FROM agro.Produto P RIGHT OUTER JOIN agro.ClasseProd C ON P.CodClass = C.CodClass WHERE CodProd=NULL;");
+				
+		PreparedStatement st = conn.prepareStatement("SELECT Nome, Descricao FROM agro.Produto P RIGHT OUTER JOIN agro.ClasseProd C ON P.CodClass = C.CodClass;");
 		ResultSet rs = st.executeQuery();
 		List<ClasseDeProduto> cdps = new ArrayList<ClasseDeProduto>();
 		while(rs.next()){
 			ClasseDeProduto cdp = new ClasseDeProduto();
 			cdp.setNome(rs.getString("Nome"));
-			cdp.setNome(rs.getString("Descricao"));
+			cdp.setDescricao(rs.getString("Descricao"));
 			cdps.add(cdp);
 		}
+
 		rs.close();
 		st.close();
 		return cdps;
 	}
 	
 	public List<Venda> four() throws SQLException {
-		PreparedStatement st = conn.prepareStatement("SELECT NomeProd, Quantidade, Mes, Ano, NomeEst FROM agro.Venda NATURAL JOIN agro.Estado NATURAL JOIN agro.Produto WHERE Ano BETWEEN 2012 AND 2016 ORDER BY NomeProd;");
+		PreparedStatement st = conn.prepareStatement("SELECT NomeProd, Quantidade, Mes, Ano NomeEst FROM agro.Venda NATURAL JOIN agro.Estado NATURAL JOIN agro.Produto WHERE Ano BETWEEN 2012 AND 2016 ORDER BY NomeProd;");
 		ResultSet rs = st.executeQuery();
 		List<Venda> vs = new ArrayList<Venda>();
 		while(rs.next()){

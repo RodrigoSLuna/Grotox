@@ -279,25 +279,25 @@ textarea:focus {
       <li class="dropdown">
         <a href="#" class="dropbtn">Consulta</a>
         <div class="dropdown-content">
-          <a href="../consulta/consulta1.html">Consulta 1</a>
-          <a href="../consulta/consulta2.html">Consulta 2</a>
-          <a href="../consulta/consulta3.html">Consulta 3</a>
-          <a href="../consulta/consulta4.html">Consulta 4</a>
-          <a href="../consulta/consulta5.html">Consulta 5</a>
-          <a href="../consulta/consulta6.html">Consulta 6</a>
-          <a href="../consulta/consulta7.html">Consulta 7</a>
-          <a href="../consulta/consulta8.html">Consulta 8</a>
-          <a href="../consulta/consulta9.html">Consulta 9</a>
-          <a href="../consulta/consulta10.html">Consulta 10</a>
+          <a href="Consulta.jsp?tipo=Consulta_one">Consulta 1</a>
+          <a href="Consulta.jsp?tipo=Consulta_two">Consulta 2</a>
+          <a href="Consulta.jsp?tipo=Consulta_three">Consulta 3</a>
+          <a href="Consulta.jsp?tipo=Consulta_four">Consulta 4</a>
+          <a href="Consulta.jsp?tipo=Consulta_five">Consulta 5</a>
+          <a href="Consulta.jsp?tipo=Consulta_six">Consulta 6</a>
+          <a href="Consulta.jsp?tipo=Consulta_seven">Consulta 7</a>
+          <a href="Consulta.jsp?tipo=Consulta_eight">Consulta 8</a>
+          <a href="Consulta.jsp?tipo=Consulta_nine">Consulta 9</a>
+          <a href="Consulta.jsp?tipo=Consulta_ten">Consulta 10</a>
         </div>
       </li>
     </ul>
 <form action ="Controller" method ="get" >
-	
-	
+
 	<div class="center box">
       <div class="blackbox"><% out.println( request.getParameter("tipo") ); %></div>
       <form class="form-inline" action="action_page.php">
+     
       <% Map<String,String[]> parametros = request.getParameterMap(); 
 		Map<String,String> getParametros = new HashMap<String,String>();
 		
@@ -312,7 +312,7 @@ textarea:focus {
 		
 		if(!request.getParameter("acao").equals("Consultar") && !request.getParameter("acao").equals("Excluir")){
 			for(String key : MyMap.keySet()){
-					out.println(key.subSequence(3, key.length()) + " <input type=\"text\" name = \""+key.substring(3, key.length())+"\"> ");
+					out.println( key.subSequence(3, key.length()) + " <input type=\"text\" name = \""+key.substring(3, key.length())+"\"> ");
 					out.println("<br>");
 			}
 		

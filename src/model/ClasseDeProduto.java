@@ -2,8 +2,9 @@ package model;
 
 public class ClasseDeProduto {
 
-	private int codigo;
-	private String nome, descricao;
+	private int codigo = -1;
+	private String nome = "empty";
+	private String descricao = "empty";
 
 	public ClasseDeProduto() {
 		codigo = -1;

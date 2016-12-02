@@ -6,11 +6,11 @@ import java.util.List;
 
 public class Produto implements Iterable<String> {
 
-	private int codigo;
-	private String nome;
+	private int codigo = -1;
+	private String nome = "empty";
 	private ClasseDeProduto classe = null;
 	private List<String> ingAtivos = new ArrayList<String>();
-	private Empresa empr;
+	private Empresa empr = null;
 
 	public Produto() {
 		codigo = -1;
@@ -25,7 +25,7 @@ public class Produto implements Iterable<String> {
 	public Produto(int codigo, String nome, ClasseDeProduto classe, Empresa emp){
 		setCodigo(codigo);
 		setNome(nome);
-		setClasse(classe);
+		setClasse_De_Produto(classe);
 		setEmpresa(emp);
 	}
 	
@@ -53,11 +53,11 @@ public class Produto implements Iterable<String> {
 		return nome;
 	}
 
-	public void setClasse(ClasseDeProduto clProduto){
+	public void setClasse_De_Produto(ClasseDeProduto clProduto){
 		classe = clProduto;
 	}
 	
-	public ClasseDeProduto getClasse(){
+	public ClasseDeProduto getClasse_De_Produto(){
 		return classe;
 	}
 	
