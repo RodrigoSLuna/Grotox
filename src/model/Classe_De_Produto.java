@@ -1,33 +1,33 @@
 package model;
 
-public class ClasseDeProduto {
+public class Classe_De_Produto {
 
-	private int codigo = -1;
+	private String codigo = "-1";
 	private String nome = "empty";
 	private String descricao = "empty";
 
-	public ClasseDeProduto() {
-		codigo = -1;
+	public Classe_De_Produto() {
+		//codigo = -1;
 		nome = descricao = "";
 	}
 
-	public ClasseDeProduto(int codigo, String nome) {
+	public Classe_De_Produto(String codigo, String nome) {
 		descricao = "";
 		this.codigo = codigo;
 		this.nome = nome;
 	}
 
-	public ClasseDeProduto(int codigo, String nome, String desc) {
+	public Classe_De_Produto(String codigo, String nome, String desc) {
 		setCodigo(codigo);
 		setNome(nome);
 		setDescricao(desc);
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 

@@ -243,9 +243,6 @@ textarea:focus {
 		out.println(" <input type = \"hidden\" name = \"nome\" value = \""+request.getParameter("nome")+"\"> ");
 	%>
 	
-	
-	
-	
     <div class="top">
       <div class="top-right"> Bem vindo ao Centro de Comercialização IBAMA</div>
       <img class="top-left" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Logo_IBAMA.svg/1052px-Logo_IBAMA.svg.png" alt="IBAMA logo">
@@ -260,9 +257,9 @@ textarea:focus {
           <a href="Command.jsp?tipo=Produto">Produto</a>
           <a href="Command.jsp?tipo=Estado">Estado</a>
           <a href="Command.jsp?tipo=Regiao">Regiao</a>
-          <a href="./cadastro/classe.html">Classe do Produto</a>
-          <a href="./cadastro/ingrediente.html">Ingrediente Ativo</a>
-          <a href="./cadastro/venda.html">Venda</a>
+          <a href="Command.jsp?tipo=Classe_De_Produto">Classe do Produto</a>
+          <a href="Command.jsp?tipo=Ingrediente_Ativo">Ingrediente Ativo</a>
+          <a href="Command.jsp?tipo=Venda">Venda</a>
       </li> 
       <li class="dropdown">
         <a href="#" class="dropbtn">Consulta</a>

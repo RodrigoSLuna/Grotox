@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.ClasseDeProduto;
+import model.Classe_De_Produto;
 import model.Empresa;
 import model.Produto;
 
@@ -19,10 +19,13 @@ public class ProdutoDA {
 	
 	public void insert(Produto p) throws SQLException {
 		PreparedStatement st = conn.prepareStatement("INSERT INTO agro.Produto(CodProd,NomeProd,CNPJ,CodClass) VALUES(?,?,?,?);");
-		st.setInt(1,p.getCodigo()) ;
+		System.out.println("ESTA PASSANDO POR AQUI <---");
+		st.setInt(1,Integer.parseInt( p.getCodigo() ) ) ;
 		st.setString(2, p.getNome());
+		System.out.println("Passou aqui");
+		System.out.println( p.getEmpresa().getCNPJ() );
 		st.setString(3, p.getEmpresa().getCNPJ());
-		st.setInt(4, p.getClasse().getCodigo());
+		st.setInt(4, Integer.parseInt( p.getClasse_De_Produto()   ) );
 		st.executeUpdate();
 		st.close();
 	}
@@ -31,8 +34,8 @@ public class ProdutoDA {
 		PreparedStatement st = conn.prepareStatement("UPDATE agro.Produto SET NomeProd=?, CNPJ=?, CodClass=? WHERE CodProd=?;");
 		st.setString(1, p.getNome());
 		st.setString(2, p.getEmpresa().getCNPJ());
-		st.setInt(3, p.getClasse().getCodigo());
-		st.setInt(4,p.getCodigo()) ;
+		st.setInt(3, Integer.parseInt ( p.getClasse_De_Produto() ) );
+		st.setInt(4,Integer.parseInt( p.getCodigo() )) ;
 		st.executeUpdate();
 		st.close();
 	}
@@ -50,13 +53,13 @@ public class ProdutoDA {
 		ResultSet rs = st.executeQuery();
 		if(rs.next()){
 			Produto p = new Produto();
-			p.setCodigo(Integer.parseInt(codigo));
+			p.setCodigo( codigo );
 			p.setNome(rs.getString("NomeProd"));
-			ClasseDeProduto cdp = new ClasseDeProduto();
+			Classe_De_Produto cdp = new Classe_De_Produto();
 			cdp.setCodigo(rs.getInt("CodClass"));
 			Empresa emp = new Empresa();
 			emp.setCNPJ(rs.getString("CNPJ"));
-			p.setClasse(cdp);
+			p.setClasse_De_Produto(cdp);
 			p.setEmpresa(emp);
 			rs.close();
 			st.close();
@@ -74,13 +77,13 @@ public class ProdutoDA {
 		ResultSet rs = st.executeQuery();
 		if(rs.next()){
 			Produto p = new Produto();
-			p.setCodigo(rs.getInt("CodProd"));
+			p.setCodigo(  rs.getString("CodProd")  );
 			p.setNome(nome);
-			ClasseDeProduto cdp = new ClasseDeProduto();
-			cdp.setCodigo(rs.getInt("CodClass"));
+			Classe_De_Produto cdp = new Classe_De_Produto();
+			cdp.setCodigo(rs.getString("CodClass"));
 			Empresa emp = new Empresa();
 			emp.setCNPJ(rs.getString("CNPJ"));
-			p.setClasse(cdp);
+			p.setClasse_De_Produto(cdp);
 			p.setEmpresa(emp);
 			rs.close();
 			st.close();

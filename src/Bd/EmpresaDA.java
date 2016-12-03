@@ -59,7 +59,7 @@ public class EmpresaDA {
 		st.close();
 	}
 	
-	public Empresa buscaPorCodigo(String codigo) throws SQLException, IOException{
+	public Empresa buscaCNPJ(String codigo) throws SQLException, IOException{
 		PreparedStatement st = conn.prepareStatement("SELECT * FROM agro.Empresa WHERE CNPJ = ? ;");
 		st.setString(1,codigo);
 		ResultSet rs = st.executeQuery();

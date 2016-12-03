@@ -29,7 +29,6 @@ public class Controller extends HttpServlet {
 	
 		String nomeDaClasse = "Form"+parametros.get("tipo")[0];
 		
-		
 		String Metodo = parametros.get("acao")[0];
 				if(!Metodo.equals("Consultar")){
 			Map<String,String> SendParametros = new HashMap<String,String>();
@@ -43,7 +42,7 @@ public class Controller extends HttpServlet {
 				Method m = dis.buscaMetodo(o.getClass(), Metodo);
 				Object form = dis.instanciaForm( m );
 				
-				System.out.println("Comecou a preencher ");
+				System.out.println(SendParametros);
 				String a = dis.preencheForm(form, SendParametros);
 				System.out.println("Terminou de preencher ");
 				if(a.equals("ok")){

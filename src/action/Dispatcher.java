@@ -74,8 +74,10 @@ public class Dispatcher {
         					/*&& field.getAnnotation(Obrigatorio.class).parametros() == true*/ )
         				
         				// throw new Exception("O campo "+stringKey.substring(3, stringKey.length())+" � obrigatorio!");
-        				
         				return stringKey.substring(3, stringKey.length());
+
+    				System.out.println("Preenche Form" + stringKey.replace(" ", "_" ));
+        		
         			setters.get(stringKey).invoke( form,parametros.get(stringDoor));
         		}
         	}

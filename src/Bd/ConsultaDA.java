@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.ClasseDeProduto;
+import model.Classe_De_Produto;
 import model.Empresa;
 import model.Estado;
 import model.Produto;
@@ -53,13 +53,13 @@ public class ConsultaDA {
 		return ests;
 	}
 	
-	public List<ClasseDeProduto> three() throws SQLException {
+	public List<Classe_De_Produto> three() throws SQLException {
 				
 		PreparedStatement st = conn.prepareStatement("SELECT Nome, Descricao FROM agro.Produto P RIGHT OUTER JOIN agro.ClasseProd C ON P.CodClass = C.CodClass;");
 		ResultSet rs = st.executeQuery();
-		List<ClasseDeProduto> cdps = new ArrayList<ClasseDeProduto>();
+		List<Classe_De_Produto> cdps = new ArrayList<Classe_De_Produto>();
 		while(rs.next()){
-			ClasseDeProduto cdp = new ClasseDeProduto();
+			Classe_De_Produto cdp = new Classe_De_Produto();
 			cdp.setNome(rs.getString("Nome"));
 			cdp.setDescricao(rs.getString("Descricao"));
 			cdps.add(cdp);

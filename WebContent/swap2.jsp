@@ -272,9 +272,9 @@ textarea:focus {
           <a href="Command.jsp?tipo=Produto">Produto</a>
           <a href="Command.jsp?tipo=Estado">Estado</a>
           <a href="Command.jsp?tipo=Regiao">Regiao</a>
-          <a href="./cadastro/classe.html">Classe do Produto</a>
-          <a href="./cadastro/ingrediente.html">Ingrediente Ativo</a>
-          <a href="./cadastro/venda.html">Venda</a>
+          <a href="Command.jsp?tipo=Classe_De_Produto">Classe do Produto</a>
+          <a href="Command.jsp?tipo=Ingrediente_Ativo">Ingrediente Ativo</a>
+          <a href=".Command.jsp?tipo=Venda">Venda</a>
       </li> 
       <li class="dropdown">
         <a href="#" class="dropbtn">Consulta</a>
@@ -302,7 +302,7 @@ textarea:focus {
 		Map<String,String> getParametros = new HashMap<String,String>();
 		
 		String nomeDaClasse = parametros.get("tipo")[0];
-		
+		System.out.println( "swap2" + nomeDaClasse );
 		Dispatcher dis = new Dispatcher();
 		Map<String, Method > MyMap = new HashMap<String,Method>();
 		
