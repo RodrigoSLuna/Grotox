@@ -1,6 +1,9 @@
 package model;
 
-public class Venda {
+import util.Completable;
+import util.Fetcher;
+
+public class Venda implements Completable {
 	private int quantidade = -1, mes = -1, ano = -1;
 	private Produto prod = null;
 	private Estado est = null;
@@ -12,18 +15,22 @@ public class Venda {
 	}
 
 	public Venda(Produto prod, Estado est, int quantidade, int mes, int ano) {
-		setProduto(prod);
-		setEstado(est);
-		setQuantidade(quantidade);
-		setMes(mes);
-		setAno(ano);
+		poeProduto(prod);
+		poeEstado(est);
+		poeQuantidade(quantidade);
+		poeMes(mes);
+		poeAno(ano);
 	}
 
 	public int getQuantidade() {
 		return quantidade;
 	}
+	
+	public void setQuantidade(String quantidade){
+		poeQuantidade(Integer.parseInt(quantidade));
+	}
 
-	public void setQuantidade(int quantidade) {
+	public void poeQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
 
@@ -31,7 +38,11 @@ public class Venda {
 		return mes;
 	}
 
-	public void setMes(int mes) {
+	public void setMes(String mes){
+		poeMes(Integer.parseInt(mes));
+	}
+	
+	public void poeMes(int mes) {
 		this.mes = mes;
 	}
 
@@ -39,7 +50,11 @@ public class Venda {
 		return ano;
 	}
 
-	public void setAno(int ano) {
+	public void setAno(String ano){
+		poeAno(Integer.parseInt(ano));
+	}
+	
+	public void poeAno(int ano) {
 		this.ano = ano;
 	}
 
@@ -47,16 +62,32 @@ public class Venda {
 		return prod;
 	}
 
-	public void setProduto(Produto prod) {
+	public void poeProduto(Produto prod) {
 		this.prod = prod;
+	}
+	
+	public void setCodigo_do_Produto(String codprod){
+		if(prod == null) prod = new Produto();
+		prod.setCodigo(codprod);
 	}
 
 	public Estado getEstado() {
 		return est;
 	}
+	
+	public void setCodigo_do_Estado(String codigo){
+		if(est == null) est = new Estado();
+		est.setCodigo_do_Estado(codigo);
+	}
 
-	public void setEstado(Estado est) {
+	public void poeEstado(Estado est) {
 		this.est = est;
+	}
+
+	@Override
+	public void fill() {
+		est = Fetcher.getEstado(est.getCodigo_do_Estado());
+		prod = Fetcher.getProduto(prod.getCodigo());
 	}
 
 }

@@ -1,20 +1,26 @@
 package model;
 
 import java.awt.image.BufferedImage;
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Empresa implements Iterable<Produto> {
+import util.Completable;
+
+public class Empresa implements Iterable<Produto>, Completable {
 
 	private String CNPJ = "empty", razaoSocial = "empty", nomeFantasia = "empty";
 	private BufferedImage logo = null;
 	private List<Produto> prods = new ArrayList<Produto>();
 
+	public void fill(){
+		for(Produto prod : prods){
+			prod.poeEmpresa(this);
+		}
+	}
+	
 	public Empresa() {
-		CNPJ = razaoSocial = nomeFantasia = "";
-		logo = null;
+		
 	}
 
 	public Empresa(String cnpj, String razaoSocial, String nomeFantasia, BufferedImage image) {
@@ -65,19 +71,25 @@ public class Empresa implements Iterable<Produto> {
 		return prods.add(elem);
 	}
 
-	private boolean setProduto_On(int idx, Produto elem) {
+	public boolean poeProduto_On(int idx, Produto elem) {
 		if (idx < prods.size()) {
 			prods.set(idx, elem);
+			elem.setCNPJ_da_Empresa(CNPJ);
 			return true;
 		}
 		return false;
 	}
 
-	public Produto getProduto_On(int index) {
+	public Produto pegaProduto_On(int index) {
 		if (index < prods.size()) {
 			return prods.get(index);
 		}
 		return null;
+	}
+	
+	@Override
+	public String toString() {
+		return nomeFantasia + "("+razaoSocial+")";
 	}
 
 }

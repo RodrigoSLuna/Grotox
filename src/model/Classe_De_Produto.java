@@ -1,13 +1,14 @@
 package model;
 
-public class Classe_De_Produto {
+import util.Completable;
 
-	private String codigo = "-1";
+public class Classe_De_Produto implements Completable {
+
+	private String codigo = "empty";
 	private String nome = "empty";
 	private String descricao = "empty";
 
 	public Classe_De_Produto() {
-		//codigo = -1;
 		nome = descricao = "";
 	}
 
@@ -21,6 +22,10 @@ public class Classe_De_Produto {
 		setCodigo(codigo);
 		setNome(nome);
 		setDescricao(desc);
+	}
+	
+	public void fill(){
+		
 	}
 
 	public void setCodigo(String codigo) {
@@ -37,6 +42,10 @@ public class Classe_De_Produto {
 
 	public String getNome() {
 		return nome;
+	}
+	
+	public int pegaCodigo(){
+		return Integer.parseInt(codigo);
 	}
 
 	public void setDescricao(String descricao) {

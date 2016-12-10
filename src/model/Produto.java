@@ -1,18 +1,17 @@
 package model;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import Bd.EmpresaDA;
+import util.Completable;
+import util.Fetcher;
 
-public class Produto implements Iterable<String> {
+public class Produto implements Iterable<String>, Completable {
 
 	private String codigo = "-1";
 	private String nome = "empty";
-	private String classe = "empty";
+	private Classe_De_Produto classe = null;
 	private List<String> ingAtivos = new ArrayList<String>();
 	private Empresa empr = null;
 
@@ -30,22 +29,17 @@ public class Produto implements Iterable<String> {
 		setCodigo(codigo);
 		setNome(nome);
 		setClasse_De_Produto(classe);
-		setEmpresa_CNPJ(emp);
+		setCNPJ_da_Empresa(emp);
 	}
 	
-	public void setEmpresa_CNPJ(String emp){
-		EmpresaDA a = new EmpresaDA();
-		try {
-			empr = a.buscaCNPJ( emp );
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
+	public void setCNPJ_da_Empresa(String emp){
+		if(empr == null) empr = new Empresa();
+		empr.setCNPJ(emp);
+	}
+	
+	public void fill(){
+		empr = Fetcher.getEmpresa(empr.getCNPJ());
+		classe = Fetcher.getClasseDeProduto(classe.getCodigo());
 	}
 	
 	public Empresa getEmpresa(){
@@ -69,7 +63,8 @@ public class Produto implements Iterable<String> {
 	}
 
 	public void setClasse_De_Produto(String clProduto){
-		classe = clProduto;
+		if(classe == null) classe = new Classe_De_Produto();
+		classe.setCodigo(clProduto);
 	}
 	
 	public String getClasse_De_Produto(){
@@ -84,6 +79,22 @@ public class Produto implements Iterable<String> {
 	@Override
 	public Iterator<String> iterator() {
 		return ingAtivos.iterator();
+	}
+
+	public void poeEmpresa(Empresa empresa) {
+		empr = empresa;
+	}
+
+	public void poeClasse_De_Produto(Classe_De_Produto cdp) {
+		this.classe = cdp;
+	}
+
+	public int pegaCodigo() {
+		return Integer.parseInt(codigo);
+	}
+	
+	public int getQuantidade_de_ingredientes_ativos(){
+		return ingAtivos.size();
 	}
 
 }

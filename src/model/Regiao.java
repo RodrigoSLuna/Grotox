@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Regiao implements Iterable<Estado> {
+import util.Completable;
+
+public class Regiao implements Iterable<Estado>, Completable {
 
 	private int codigo = -1;
 	private String nome = "empty";
@@ -45,16 +47,16 @@ public class Regiao implements Iterable<Estado> {
 		return ests.add(elem);
 	}
 
-	public boolean Coloca_Estado_On(int index, Estado elem) {
+	public boolean poeEstado_On(int index, Estado elem) {
 		if (index < ests.size()) {
 			ests.set(index, elem);
-	//		elem.setRegiao(this);
+			elem.setCodigo_da_Regiao(Integer.toString(codigo));
 			return true;
 		}
 		return false;
 	}
 
-	public Estado Pega_Estado_On(int index) {
+	public Estado pegaEstado_On(int index) {
 		if (index < ests.size()) {
 			return ests.get(index);
 		}
@@ -64,6 +66,13 @@ public class Regiao implements Iterable<Estado> {
 	@Override
 	public Iterator<Estado> iterator() {
 		return ests.iterator();
+	}
+
+	@Override
+	public void fill() {
+		for(Estado est: ests){
+			est.poeRegiao(this);
+		}
 	}
 
 }

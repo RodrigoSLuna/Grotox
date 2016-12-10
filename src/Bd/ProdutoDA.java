@@ -53,14 +53,14 @@ public class ProdutoDA {
 		ResultSet rs = st.executeQuery();
 		if(rs.next()){
 			Produto p = new Produto();
-			p.setCodigo( codigo );
+			p.setCodigo(codigo);
 			p.setNome(rs.getString("NomeProd"));
 			Classe_De_Produto cdp = new Classe_De_Produto();
-			cdp.setCodigo(rs.getInt("CodClass"));
+			cdp.setCodigo(rs.getString("CodClass"));
 			Empresa emp = new Empresa();
 			emp.setCNPJ(rs.getString("CNPJ"));
-			p.setClasse_De_Produto(cdp);
-			p.setEmpresa(emp);
+			p.poeClasse_De_Produto(cdp);
+			p.poeEmpresa(emp);
 			rs.close();
 			st.close();
 			return p;
@@ -83,8 +83,8 @@ public class ProdutoDA {
 			cdp.setCodigo(rs.getString("CodClass"));
 			Empresa emp = new Empresa();
 			emp.setCNPJ(rs.getString("CNPJ"));
-			p.setClasse_De_Produto(cdp);
-			p.setEmpresa(emp);
+			p.poeClasse_De_Produto(cdp);
+			p.poeEmpresa(emp);
 			rs.close();
 			st.close();
 			return p;
