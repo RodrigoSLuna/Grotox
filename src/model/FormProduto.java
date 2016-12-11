@@ -1,4 +1,5 @@
 package model;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,15 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Bd.EstadDA;
+import Bd.ProdutoDA;
 import action.Dispatcher;
 import model.Estado;
 
-public class FormEstado extends HttpServlet {
+public class FormProduto extends HttpServlet {
 
-	public String Adicionar(Estado form) {
+	public String Adicionar(Produto form) {
 		try {
 			System.out.println("Inserir OK");
-			EstadDA da = new EstadDA();
+			ProdutoDA da = new ProdutoDA();
 			da.insert(form);
 		} catch (Exception e) {
 			e.printStackTrace();
