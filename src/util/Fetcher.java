@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import Bd.ClasseDeProdutoDA;
 import Bd.EmpresaDA;
-import Bd.EstadoDA;
+import Bd.EstadDA;
 import Bd.ProdutoDA;
 import Bd.RegiaoDA;
 import model.Classe_De_Produto;
@@ -67,7 +67,7 @@ public class Fetcher {
 	public static Estado getEstado(String codigo) {
 		Estado est = new Estado();
 		try{
-			EstadoDA da = new EstadoDA();
+			EstadDA da = new EstadDA();
 			est = da.buscaPorCodigo(codigo);
 		}catch (SQLException e){
 			e.printStackTrace();

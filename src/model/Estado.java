@@ -23,11 +23,12 @@ public class Estado implements Completable {
 	}
 	
 	public void setCodigo_da_Regiao(String CodRegiao){
-		if(regiao == null) regiao.setCodigo(CodRegiao);
+		if(regiao == null) regiao = new Regiao();
 		regiao.setCodigo(CodRegiao); 
 	}
 	
 	public String getCodigo_da_Regiao(){
+		if(regiao == null) return "empty";
 		return Integer.toString(regiao.getCodigo());
 	}
 

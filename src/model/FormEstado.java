@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Bd.EstadoDA;
+import Bd.EstadDA;
 import action.Dispatcher;
 import model.Estado;
 
@@ -22,7 +22,7 @@ public class FormEstado extends HttpServlet {
 	public String Adicionar(Estado form) {
 		try {
 			System.out.println("Inserir OK");
-			EstadoDA da = new EstadoDA();
+			EstadDA da = new EstadDA();
 			da.insert(form);
 		} catch (Exception e) {
 			e.printStackTrace();
